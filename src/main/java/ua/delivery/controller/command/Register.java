@@ -1,16 +1,16 @@
 package ua.delivery.controller.command;
 
+import org.apache.commons.dbcp.BasicDataSource;
 import ua.delivery.controller.Command;
 import ua.delivery.model.entity.User;
 import ua.delivery.model.entity.enums.Role;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.PrintWriter;
+import javax.sql.DataSource;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class Register implements Command {
     @Override
@@ -37,51 +37,49 @@ public class Register implements Command {
             System.out.println(user);
 
 
-            String url = "jdbs:mysql://localhost:3306/userdb";
+            String url = "jdbc:mysql://localhost:3306/userdb?useUnicode=true&serverTimezone=UTC";
             String username1 = "root";
             String password1 = "root";
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-                Connection conn = DriverManager.getConnection(url, username, password);
 
-                System.out.println("DriverManager.getConnection");
-                final String query = "INSERT INTO user" +
-                        "(firstName, lastName, role, username, password) " +
-                        "VALUES (?, ?, ?, ?, ?)";
-                try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-                    pstmt.clearParameters();
-                    pstmt.setString(1, user.getFirstName());
-                    pstmt.setString(2, user.getLastName());
-                    pstmt.setString(3, user.getRole().name());
-                    pstmt.setString(4, user.getUsername());
-                    pstmt.setString(5, user.getPassword());
-                    int countAdded = pstmt.executeUpdate();
-                    System.out.println("added - " + countAdded);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+            final String query = "INSERT INTO users" +
+                    "(firstName, lastName, username, password, role) " +
+                    "VALUES (?, ?, ?, ?, ?)";
+
+            DataSource dataSource;
+            BasicDataSource ds = new BasicDataSource();
+            ds.setUrl(url);
+            ds.setUsername(username1);
+            ds.setPassword(password1);
+            ds.setMinIdle(5);
+            ds.setMaxIdle(10);
+            ds.setMaxOpenPreparedStatements(100);
+            dataSource = ds;
 
 
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
+
+
+            try (Connection conn = dataSource.getConnection())
+             {
+                 System.out.println("CONN");
+                 PreparedStatement preparedStatement = conn.prepareStatement(query);
+                 preparedStatement.setString(1, user.getFirstName());
+                 preparedStatement.setString(2, user.getLastName());
+                 preparedStatement.setString(3, user.getUsername());
+                 preparedStatement.setString(4, user.getPassword());
+                 preparedStatement.setString(5, user.getRole().name());
+                 preparedStatement.executeUpdate();
+                 System.out.println("User save");
+
+             } catch (Exception e) {
                 e.printStackTrace();
             }
-            {
 
 
-                return "/user-basis.jsp";
-            }
 
+            return "redirect:/login.jsp";
         }
 
     }
+
 }
+

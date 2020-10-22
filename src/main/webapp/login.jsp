@@ -9,31 +9,37 @@
 
 <html lang="${sessionScope.lang}">
 <head>
-    <title>Main</title>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+
 </head>
-    <body>
-        <a href="?sessionLocale=en"><button><fmt:message key="label.lang.en" /></button></a><span>  </span>
-        <a href="?sessionLocale=ua"><button><fmt:message key="label.lang.ua" /></button></a>
-    <h1><fmt:message key="label.select"/></h1>
+    <body style="background-color: aquamarine; text-align: center; margin: 10px">
+
+    <div style="text-align: right"><a href="?sessionLocale=en"><button style="background-color: blue">
+        <fmt:message key="label.lang.en" /></button></a><span>  </span>
+        <a href="?sessionLocale=ua"><button style="background-color: yellow; ">
+            <fmt:message key="label.lang.ua" /></button></a>
+            <a href="${pageContext.request.contextPath}/index.jsp"><button><fmt:message key="label.logout"/></button></a>
+    </div>
+    <fieldset><legend><h1><fmt:message key="label.select"/></h1></legend>
 
     <form action="${pageContext.request.contextPath}/login" method="post">
         <%--<input type="radio" name="role" value="ROLE_ADMIN"/>admin--%>
         <%--<input type="radio" name="role" value="ROLE_USER" checked/>user--%>
         <br><br>
-        <fmt:message key="label.username"/> : <input name="username"/>
+        <fmt:message key="label.username"/> : <input name="username" min=1/>
         <br><br>
         <fmt:message key="label.password"/> : <input name="password" type="password" min=1/>
         <br><br>
         <button>
             <fmt:message key="label.login"/>
         </button>
+
+
     </form>
 
-
-    <a href="${pageContext.request.contextPath}/index.jsp">
-        <button>
-            <fmt:message key="label.logout"/>
-        </button></a>
+    </fieldset>
 
     </body>
 </html>

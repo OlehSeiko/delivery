@@ -11,23 +11,32 @@
 <head>
     <title>Main</title>
 </head>
-<body>
-<a href="?sessionLocale=en"><button><fmt:message key="label.lang.en" /></button></a><span>  </span>
-<a href="?sessionLocale=ua"><button><fmt:message key="label.lang.ua" /></button></a>
-<h1>REGISTRATION</h1>
+<body style="background-color: aqua; text-align: center; margin: 10px">
+<div style="text-align: right"><a href="?sessionLocale=en"><button style="background-color: blue">
+    <fmt:message key="label.lang.en" /></button></a><span>  </span>
+    <a href="?sessionLocale=ua"><button style="background-color: yellow; "><fmt:message key="label.lang.ua" /></button></a>
+    <a href="${pageContext.request.contextPath}/index.jsp">
+        <button>
+            <fmt:message key="label.logout"/>
+        </button></a>
+</div>
+
+<fieldset>
+    <legend><h1><fmt:message key="label.registration"/></h1></legend>
 
 <form action="${pageContext.request.contextPath}/registration" method="post">
-    <p><label>Name:    </label><input type="text" name="firstName"></p>
-    <p><label>Surname: </label><input type="text" name="lastName"></p>
-    <p><label>Email:   </label><input name="username"></p>
-    <p><label>Password:</label><input type="password" name="password"></p>
-    <p><input type="submit" value="Register"></p>
+    <p><label><fmt:message key="label.name"/> :   </label><input type="text" name="firstName"></p>
+    <p><label><fmt:message key="label.surname"/>: </label><input type="text" name="lastName"></p>
+    <p><label><fmt:message key="label.email"/>:   </label><input name="username"></p>
+    <p><label><fmt:message key="label.password"/>:</label><input type="password" name="password"></p>
+    <button>
+        <fmt:message key="label.register"/>
+    </button>
+
 
 </form>
-<a href="${pageContext.request.contextPath}/index.jsp">
-    <button>
-        <fmt:message key="label.logout"/>
-    </button></a>
+
+</fieldset>
 
 </body>
 </html>

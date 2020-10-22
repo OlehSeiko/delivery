@@ -72,6 +72,24 @@ public class User {
         this.role = role;
     }
 
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        User user = (User) o;
+//        return id == user.id &&
+//                firstName.equals(user.firstName) &&
+//                lastName.equals(user.lastName) &&
+//                username.equals(user.username) &&
+//                password.equals(user.password) &&
+//                role.equals(user.role);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, firstName, lastName, username, password, role);
+//    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -82,7 +100,7 @@ public class User {
                 lastName.equals(user.lastName) &&
                 username.equals(user.username) &&
                 password.equals(user.password) &&
-                role.equals(user.role);
+                role == user.role;
     }
 
     @Override

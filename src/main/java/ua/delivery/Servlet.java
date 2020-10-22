@@ -3,15 +3,13 @@ package ua.delivery;
 import ua.delivery.controller.Command;
 import ua.delivery.controller.command.Login;
 import ua.delivery.controller.command.Register;
+import ua.delivery.controller.command.UserBasis;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +22,7 @@ public class Servlet extends HttpServlet {
     public void init() throws ServletException {
         commands.put("login", new Login());
         commands.put("registration", new Register());
+        commands.put("userbasis", new UserBasis());
     }
 
     @Override
@@ -55,7 +54,7 @@ public class Servlet extends HttpServlet {
         String page = command.execute(request);
         System.out.println("P A G E!!!!!!" + page);
         if (page.contains("redirect:")) {
-            response.sendRedirect(page.replace("redirect:", "/delivery"));
+            response.sendRedirect(page.replace("redirect:", "/Delivery_war"));
         } else {
             request.getRequestDispatcher(page).forward(request, response);
         }
