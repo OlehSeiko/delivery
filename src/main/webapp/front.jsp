@@ -19,35 +19,35 @@
     <fmt:message key="label.lang.en" /></button></a><span>  </span>
 <a href="?sessionLocale=ua"><button style="background-color: yellow; ">
     <fmt:message key="label.lang.ua" /></button></a>
-    <a href="${pageContext.request.contextPath}/index.jsp"><button><fmt:message key="label.logout"/></button></a>
+    <%--<a href="${pageContext.request.contextPath}/login.jsp"><button><fmt:message key="label.logout"/></button></a>--%>
 </div>
 
 <h1><fmt:message key="label.delivery"/></h1>
 
-<form action="${pageContext.request.contextPath}/index.jsp">
+<form action="${pageContext.request.contextPath}/result">
     <fieldset>
         <legend><h3><fmt:message key="label.calculation"/> </h3></legend>
-        <p><label>Місто завантаження: </label>
-            <select>
-                <option>Львів</option>
-                <option>Вінниця</option>
-                <option>Дніпро</option>
-                <option>Київ</option>
-                <option>Харків</option>
+        <p><label><fmt:message key="label.downcity" />: </label>
+            <select name="downloadCity">
+                <option><fmt:message key="label.citylviv" /></option>
+                <option><fmt:message key="label.cityvinnytsia" /></option>
+                <option><fmt:message key="label.citydnipro" /></option>
+                <option><fmt:message key="label.citykiev" /></option>
+                <option><fmt:message key="label.citykharkiv" /></option>
             </select>
-            <label>Місто розвантаження:</label>
-            <select>
-                <option>Львів</option>
-                <option>Вінниця</option>
-                <option>Дніпро</option>
-                <option>Київ</option>
-                <option>Харків</option>
+            <label><fmt:message key="label.unloadcity" />:</label>
+            <select name="cityOfUnloading">
+                <option><fmt:message key="label.citylviv" /></option>
+                <option><fmt:message key="label.cityvinnytsia" /></option>
+                <option><fmt:message key="label.citydnipro" /></option>
+                <option><fmt:message key="label.citykiev" /></option>
+                <option><fmt:message key="label.citykharkiv" /></option>
             </select>
-            <label>Відстань:</label><input type="number"> км.</p>
-        <p><label>Дата завантаження: </label><input type="date">
-            <label>Дата розвантаження:</label><input type="date"></p>
-        <p><label>Вага:</label><input type="number"> кг.
-            <label>Категорія товару:</label><input type="number"></p>
+            <label><fmt:message key="label.distance" />:</label><input type="number" name="distance"> </p>
+        <p><label><fmt:message key="label.uploaddate" />: </label><input type="date" name="date">
+            <label><fmt:message key="label.dateofunloading" />:</label><input type="date" name="date"></p>
+        <p><label><fmt:message key="label.weight" />:</label><input type="number" name="weight">
+            <label><fmt:message key="label.category" />:</label><input type="number" name="category"></p>
         <p><button>
             <fmt:message key="label.calculate"/>
         </button></p>

@@ -20,7 +20,7 @@
         <fmt:message key="label.lang.en" /></button></a><span>  </span>
         <a href="?sessionLocale=ua"><button style="background-color: yellow; ">
             <fmt:message key="label.lang.ua" /></button></a>
-            <a href="${pageContext.request.contextPath}/index.jsp"><button><fmt:message key="label.logout"/></button></a>
+            <a href="${pageContext.request.contextPath}/registration.jsp"><button><fmt:message key="label.registration"/></button></a>
     </div>
     <fieldset><legend><h1><fmt:message key="label.select"/></h1></legend>
 

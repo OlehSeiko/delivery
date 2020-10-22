@@ -15,9 +15,9 @@
 <div style="text-align: right"><a href="?sessionLocale=en"><button style="background-color: blue">
     <fmt:message key="label.lang.en" /></button></a><span>  </span>
     <a href="?sessionLocale=ua"><button style="background-color: yellow; "><fmt:message key="label.lang.ua" /></button></a>
-    <a href="${pageContext.request.contextPath}/index.jsp">
+    <a href="${pageContext.request.contextPath}/login.jsp">
         <button>
-            <fmt:message key="label.logout"/>
+            <fmt:message key="label.login"/>
         </button></a>
 </div>
 

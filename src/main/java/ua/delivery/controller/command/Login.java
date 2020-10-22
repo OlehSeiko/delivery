@@ -8,6 +8,7 @@ import ua.delivery.model.entity.User;
 import ua.delivery.model.entity.enums.Role;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class Login implements Command {
     public String execute(HttpServletRequest request) {
         String name = request.getParameter("username");
         String pass = request.getParameter("password");
+        request.setAttribute("username", name);
         System.out.println(name + " " + pass);
         User currentUser = new User();
         if (name == null || name.equals(" ") || pass == null || pass.equals(" ")) {
@@ -68,7 +70,10 @@ public class Login implements Command {
                     if (user.getUsername().equals(name) && user.getPassword().equals(pass)) {
                         currentUser = user;
                         System.out.println("currentUser: " + currentUser);
-                        return "WEB-INF/user/user-basis.jsp";
+                        HttpSession session = request.getSession();
+                        session.setAttribute("user", currentUser);
+
+                        return "redirect:/user-basis";
                     }
                 }
             } catch (SQLException e) {

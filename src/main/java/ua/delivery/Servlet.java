@@ -3,6 +3,7 @@ package ua.delivery;
 import ua.delivery.controller.Command;
 import ua.delivery.controller.command.Login;
 import ua.delivery.controller.command.Register;
+import ua.delivery.controller.command.Result;
 import ua.delivery.controller.command.UserBasis;
 
 import javax.servlet.ServletException;
@@ -22,14 +23,13 @@ public class Servlet extends HttpServlet {
     public void init() throws ServletException {
         commands.put("login", new Login());
         commands.put("registration", new Register());
-        commands.put("userbasis", new UserBasis());
+        commands.put("result", new Result());
+        commands.put("user-basis", new UserBasis());
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
-
-
     }
 
 
@@ -37,8 +37,6 @@ public class Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
-
-        //підключаю БД
 
     }
 

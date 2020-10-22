@@ -3,16 +3,16 @@ package ua.delivery.controller.command;
 import ua.delivery.controller.Command;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class UserBasis implements Command {
     @Override
     public String execute(HttpServletRequest request) {
-        String downloadCity = request.getParameter("downloadCity");
-        String cityOfUnloading = request.getParameter("cityOfUnloading");
-        int distance = Integer.parseInt(request.getParameter("distance"));
-        int weight = Integer.parseInt(request.getParameter("weight"));
-        int category = Integer.parseInt(request.getParameter("category"));
+        HttpSession session = request.getSession();
+        Object user = session.getAttribute("user");
 
-        return "/sum.jsp";
+        request.setAttribute("user", user);
+
+        return "WEB-INF/user/user-basis.jsp";
     }
 }

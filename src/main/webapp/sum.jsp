@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>SUM-Page</h1>
+<h1>Разом грн. ${sum}</h1>
+
 </body>
 </html>
