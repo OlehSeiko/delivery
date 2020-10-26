@@ -4,8 +4,8 @@ import ua.delivery.model.entity.User;
 
 import java.util.Optional;
 
-public interface UserDAO extends GenericDAO<User> {
+public interface UserDao extends GenericDao<User> {
 
-    Optional<User> findAll(String name);
+    public User findByUsername(String username);
 }
 

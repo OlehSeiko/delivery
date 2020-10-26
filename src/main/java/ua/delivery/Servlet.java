@@ -5,6 +5,7 @@ import ua.delivery.controller.command.Login;
 import ua.delivery.controller.command.Register;
 import ua.delivery.controller.command.Result;
 import ua.delivery.controller.command.UserBasis;
+import ua.delivery.model.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +23,7 @@ public class Servlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         commands.put("login", new Login());
-        commands.put("registration", new Register());
+        commands.put("registration", new Register(new UserService()));
         commands.put("result", new Result());
         commands.put("user-basis", new UserBasis());
     }

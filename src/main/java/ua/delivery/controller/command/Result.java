@@ -24,10 +24,11 @@ public class Result implements Command {
 
             request.setAttribute("sum", sum);
 
-
-            return "/sum.jsp";
+///sum.jsp"
+            return "/front.jsp";
         }catch (Exception e) {
-            return "/sum.jsp";
+//            /sum.jsp"
+            return "/front.jsp";
         }
     }
 }

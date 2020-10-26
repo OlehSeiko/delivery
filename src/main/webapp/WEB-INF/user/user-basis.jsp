@@ -53,7 +53,11 @@ ${user.username}
         <p><label><fmt:message key="label.uploaddate" />: </label><input type="date" name="date">
             <label><fmt:message key="label.dateofunloading" />:</label><input type="date" name="date"></p>
         <p><label><fmt:message key="label.weight" />:</label><input type="number" name="weight">
-            <label><fmt:message key="label.category" />:</label><input type="number" name="category"></p>
+            <label><fmt:message key="label.category" />:</label>
+            <select name="category">
+                <option> 1 </option>
+                <option> 2 </option>
+            </select></p>
         <button><fmt:message key="label.calculate"/></button>
         <button><fmt:message key="label.application"/></button>
     </fieldset>

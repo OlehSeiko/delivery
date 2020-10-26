@@ -28,7 +28,7 @@
     <fieldset>
         <legend><h3><fmt:message key="label.calculation"/> </h3></legend>
         <p><label><fmt:message key="label.downcity" />: </label>
-            <select name="downloadCity">
+            <select name="downloadCity" on>
                 <option><fmt:message key="label.citylviv" /></option>
                 <option><fmt:message key="label.cityvinnytsia" /></option>
                 <option><fmt:message key="label.citydnipro" /></option>
@@ -47,10 +47,14 @@
         <p><label><fmt:message key="label.uploaddate" />: </label><input type="date" name="date">
             <label><fmt:message key="label.dateofunloading" />:</label><input type="date" name="date"></p>
         <p><label><fmt:message key="label.weight" />:</label><input type="number" name="weight">
-            <label><fmt:message key="label.category" />:</label><input type="number" name="category"></p>
+            <label><fmt:message key="label.category" />:</label>
+            <select name="category">
+                <option> 1 </option>
+                <option> 2 </option>
+            </select></p>
         <p><button>
             <fmt:message key="label.calculate"/>
-        </button></p>
+        </button><h3>Сума гривень: ${sum} </h3></p>
     </fieldset>
 </form>
 
